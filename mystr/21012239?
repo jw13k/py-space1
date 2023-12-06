@@ -1,0 +1,49 @@
+import time
+import os
+
+def run_ascii_art():
+    runner_frames = [
+        [
+            "  O  ",
+            "  /|\ ",
+            "  / \ ",
+            " =====",
+        ],
+        [
+            "   O  ",
+            "   /|\ ",
+            "   / \ ",
+            "  =====",
+        ],
+        [
+            "    O  ",
+            "    /|\ ",
+            "    / \ ",
+            "   =====",
+        ],
+    ]
+
+    # 초기 위치
+    position = 0
+
+    # 반복해서 오른쪽으로 이동하며 달리는 사람 표시
+    for _ in range(100):  # 10번 반복
+        os.system('cls' if os.name == 'nt' else 'clear')  # 화면을 깨끗하게 지우기
+
+        # 현재 위치에 맞는 프레임 출력
+        for frame in runner_frames:
+            spaces = " " * position
+            for line in frame:
+                print(spaces + line)
+
+            # 잠시 멈춤
+            time.sleep(0.01)
+
+            # 다음 프레임을 위해 화면을 지움
+            os.system('cls' if os.name == 'nt' else 'clear')
+
+        # 위치 업데이트 (오른쪽으로 이동)
+        position += 1
+
+# 프로그램 실행
+run_ascii_art()
